@@ -15,8 +15,8 @@ node{
     stage('Build Docker Image'){
             sh 'docker build -t sumand123/myspring:2.0.0 .'
         }
-        stage('Push Docker Image'){withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockepwd')]) {
-        sh "docker login -u sumand123 -p ${dockepwd}"
+        stage('Push Docker Image'){withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
+        sh "docker login -u sumand123 -p ${dockerHubPwd}"
     // some block
             }
             sh 'docker push  sumand123/myspring:2.0.0'
