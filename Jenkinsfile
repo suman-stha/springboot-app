@@ -24,7 +24,7 @@ node{
         stage('deploy to tomcat server'){
      sshagent(['pem-tomcatser']) {
     
-       sh 'ssh -o StrictHostKeyChecking=no target/*.war ec2-user@52.15.194.138:/opt/tomcat9/webapps/'
+       sh 'ssh -o StrictHostKeyChecking=no target/*.jar ec2-user@52.15.194.138:/opt/tomcat9/webapps/'
      }
         }
         }
