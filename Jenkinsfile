@@ -21,10 +21,12 @@ node{
             }
             sh 'docker push  sumand123/myspring:2.0.0'
         }
-        stage('deploy to tomcat server'){
-     sshagent(['pem-tomcatser']) {
-    
-       sh 'ssh -o StrictHostKeyChecking=no target/*.jar ec2-user@52.15.194.138:/opt/tomcat9/webapps/'
-     }
+        stage('Deploy on Production Server'){
+            sshagent(['pem-tomcatser']) {
+    // some block
+     sh 'scp -o StrictHostKeyChecking=no target/*.jar ec2-user@52.15.194.138:/opt/tomcat9/webapps/'
+}
+
         }
         }
+        
